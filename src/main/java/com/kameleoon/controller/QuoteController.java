@@ -80,8 +80,8 @@ public class QuoteController {
         return ResponseEntity.ok(worstQuotes);
     }
 
-    @GetMapping("/details/{quoteId}")
-    public ResponseEntity<Quote> getQuoteDetails(@PathVariable Long quoteId) {
+    @GetMapping("/{quoteId}")
+    public ResponseEntity<Quote> getQuote(@PathVariable Long quoteId) {
         Optional<Quote> quoteOptional = quoteService.findById(quoteId);
         return quoteOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
